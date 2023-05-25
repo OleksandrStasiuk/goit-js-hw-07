@@ -30,18 +30,16 @@ function createGalleryElements(items) {
 
 function onGalleryItemClick(event) {
   event.preventDefault();
-  const image = event.target.dataset.source;
+  if (event.target.classList.contains("gallery__image")) {
+    const image = event.target.dataset.source;
 
-  const lightbox = basicLightbox.create(`<img src="${image}">`);
-  lightbox.show();
-}
-
-function bindEvents(galleryElements) {
-  listEl.addEventListener("click", onGalleryItemClick);
+    const lightbox = basicLightbox.create(`<img src="${image}">`);
+    lightbox.show();
+  }
 }
 
 function initGallery(items) {
   let galleryElements = createGalleryElements(items);
-  bindEvents(galleryElements);
+  listEl.addEventListener("click", onGalleryItemClick);
 }
 initGallery(galleryItems);

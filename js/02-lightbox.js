@@ -27,20 +27,11 @@ function createGalleryElements(items) {
   return listEl;
 }
 
-function onGalleryItemClick(event) {
-  event.preventDefault();
+function initGallery(items) {
+  let galleryElements = createGalleryElements(items);
   const lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
     captionDelay: 250,
   });
-}
-
-function bindEvents(galleryElements) {
-  listEl.addEventListener("click", onGalleryItemClick);
-}
-
-function initGallery(items) {
-  let galleryElements = createGalleryElements(items);
-  bindEvents(galleryElements);
 }
 initGallery(galleryItems);
